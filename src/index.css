@@ -1,0 +1,88 @@
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  width: 800px;
+  margin: auto;
+}
+
+.app-separator {
+  border: 1px dotted;
+  margin: 10px;
+  padding: 10px;
+}
+
+/* Navgation */
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navigation ul li {
+  padding-right: 20px;
+}
+
+/* Users */
+.users-wrap {
+  padding: 10px;
+}
+
+.users-wrap .users {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.users-wrap .users td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.users-wrap .users tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.users-wrap .users tr:hover {
+  background-color: #ddd;
+}
+
+
+/* Home */
+.home-wrap .btn-update-footer {
+  width: 200px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.home-wrap p button {
+  margin-left: 10px;
+}
+
+/* Form */
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=button] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
