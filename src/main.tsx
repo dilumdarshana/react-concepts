@@ -5,6 +5,7 @@ import { SiteDataProvider } from './contexts/siteData';
 import { CounterProvider } from './contexts/counter';
 import DefaultLayout from './layouts/Default';
 import Home from './components/home';
+import Users from './components/users';
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                     <Routes>
                         <Route element={<DefaultLayout />}>
                             <Route path='/' element={<Home />} />
+                            <Route path='/users' element={<Users />} />
                         </Route>
                     </Routes>
                 </CounterProvider>
