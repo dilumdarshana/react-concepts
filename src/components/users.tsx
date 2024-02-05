@@ -3,6 +3,15 @@ import SiteDataContext from '../contexts/siteData';
 import { SiteDataContextType } from '../@types/siteDataContext.td';
 import useFetch from '../hooks/useFetch';
 
+interface ApiResponse {
+    loading: boolean;
+    data: {
+        first_name: string;
+        last_name: string;
+        email: string;
+    };
+}
+
 const Users = () => {
     const { setPageTitle } = useContext(SiteDataContext) as SiteDataContextType;
     let userList: { id: number; first_name: string; last_name: string; email: string }[] = [];
@@ -18,7 +27,7 @@ const Users = () => {
 
     const { loading, data } = useFetch(options);
 
-    if (!loading && data) {
+    if (!loading && data && data.data) {
         userList = data.data;
     }
 
@@ -37,10 +46,10 @@ const Users = () => {
                     <tbody>
                         {
                             userList.map(user => (
-                                <tr>
-                                    <td>a</td>
-                                    <td>b</td>
-                                    <td>c</td>
+                                <tr key={user.id}>
+                                    <td>{user.first_name}</td>
+                                    <td>{user.last_name}</td>
+                                    <td>{user.email}</td>
                                 </tr>
                             ))
                         }

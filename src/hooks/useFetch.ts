@@ -10,7 +10,7 @@ interface ApiResponse {
     data: [];
 }
 
-const useFetch = (options: OptionTypes): ApiResponse => {
+const useFetch = <T>(options: OptionTypes): { loading: boolean, data: T } => {
     const { url, method } = options;
     const [data, setData] = useState<ApiResponse>({ loading: false, data: [] });
 
