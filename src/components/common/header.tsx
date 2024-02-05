@@ -18,6 +18,12 @@ const Header = () => {
                     <li>
                         <Link to="/play">Play</Link>
                     </li>
+                    <li>
+                        <Link to="/transition">Transition</Link>
+                    </li>
+                    <li>
+                        <Link to="/debounce">Debounce</Link>
+                    </li>
                 </ul>
             </nav>
         </div>

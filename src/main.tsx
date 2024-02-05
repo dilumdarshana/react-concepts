@@ -8,6 +8,8 @@ import Home from './components/home';
 import Users from './components/users';
 import Form from './components/form';
 import Play from './components/play';
+import Transition from './components/transition';
+import Debounce from './components/debounce';
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -21,6 +23,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                             <Route path='/users' element={<Users />} />
                             <Route path='/form' element={<Form />} />
                             <Route path='/play' element={<Play />} />
+                            <Route path='/transition' element={<Transition />} />
+                            <Route path='/debounce' element={<Debounce />} />
                         </Route>
                     </Routes>
                 </CounterProvider>
