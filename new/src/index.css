@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.container {
+  width: 800px;
+  margin: auto;
+}
+
+.component-container {
+  border: 1px dotted;
+  margin: 10px;
+  padding: 10px;
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation ul li {
+  margin-right: 20px;
+}
+
+.home-component .update-btn {
+  width: 200px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.home-component p button {
+  margin-left: 10px;
+}
