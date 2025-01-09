@@ -19,10 +19,14 @@
   -  useDeferredValue: Replication for debounce
   -  useId: To generate random ID
     
-- Custom hooks
-  - useFetch
-  - useForm
-  - useLocalStorage
+- Custom hooks: 
+  - Rules:
+    - Hooks inside hooks are allowed
+    - Must be called inside a component. Hook will follow the generic component patterns
+  - Examples:
+    - useFetch
+    - useForm
+    - useLocalStorage
 
 - Experimental hooks
   - use: To handle promises, contexts, etc
