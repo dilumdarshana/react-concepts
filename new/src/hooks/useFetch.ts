@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { UseFetchOptionTypes, FetchState } from '../@types/useFetch.td';
+import { UseFetchOptionTypes, FetchState } from '../@types/useFetch';
 
 const useFetch = <T>(options: UseFetchOptionTypes) => {
   const { url, method } = options;

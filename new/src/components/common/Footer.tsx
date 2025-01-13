@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import CounterContext from '../../contexts/Counter';
-import { ConterContextType } from '../../@types/conterContext.td';
+import { ConterContextType } from '../../@types/conterContext';
 
 const Footer = () => {
   const { counter } = useContext(CounterContext) as ConterContextType;

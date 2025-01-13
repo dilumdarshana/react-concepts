@@ -1,8 +1,8 @@
 import { useContext, useEffect, useId } from 'react';
 import useForm from '../hooks/useForm';
-import { FormType } from '../@types/form.td';
+import { FormType } from '../@types/form';
 import SiteDataContext from '../contexts/SiteData';
-import { SiteDataContextType } from '../@types/siteDataContext.td';
+import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Form = () => {
   const randomId = useId();

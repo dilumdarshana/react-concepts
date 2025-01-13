@@ -1,4 +1,4 @@
-import { JSX, StrictMode } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import DefaultLayout from './layouts/Default';
@@ -8,18 +8,11 @@ import Form from './pages/Form';
 import Users from './pages/Users';
 import Hooks from './pages/Hooks';
 import { SiteDataProvider } from './contexts/SiteData';
-import MyErrorBoundary from './components/ErrorBoundary';
-import ErrorFallback from './components/common/ErrorFallback';
+import WithErrorBoundary from './components/common/WithErrorBoundary';
 import './index.css';
 
-const withErrorBoundary = (Component: React.ComponentType) =>  
-  (props: any): JSX.Element => (
-    <MyErrorBoundary fallback={<ErrorFallback />}>
-      <Component {...props} />
-    </MyErrorBoundary>
-  );
-
-const UserWithErrorBoundary = withErrorBoundary(Users);
+// wrapped with error boundary
+const UserWithErrorBoundary = WithErrorBoundary(Users);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

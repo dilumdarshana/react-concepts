@@ -1,10 +1,10 @@
 import { useContext, useEffect, useReducer } from 'react';
 import CounterContext from '../contexts/Counter';
-import { ConterContextType } from '../@types/conterContext.td';
+import { ConterContextType } from '../@types/conterContext';
 import counterReducer from '../reducers/couter';
 import { INCREMENT, DECREMENT } from '../constants/action_types/counter';
 import SiteDataContext from '../contexts/SiteData';
-import { SiteDataContextType } from '../@types/siteDataContext.td';
+import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Home = () => {
   const { setCounter } = useContext(CounterContext) as ConterContextType;

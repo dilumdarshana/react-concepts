@@ -1,25 +1,28 @@
-import { Suspense, useContext, useEffect } from 'react';
-import { UserListType, UserResponseType } from '../@types/common.td';
-import { UseFetchOptionTypes } from '../@types/useFetch.td';
+import { Suspense, useContext, useEffect, useState } from 'react';
+import { UserListType, UserResponseType } from '../@types/common';
+import { UseFetchOptionTypes } from '../@types/useFetch';
 import useFetch from '../hooks/useFetch';
 import SiteDataContext from '../contexts/SiteData';
+import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Users = () => {
-  const { setPageTitle }  = useContext(SiteDataContext);
-  let userList: UserListType[] = [];
+  const { setPageTitle } = useContext(SiteDataContext) as SiteDataContextType;
+  const [users, setUsers] = useState<UserListType[]>([]);
   const options: UseFetchOptionTypes = {
     url: 'https://reqres.in/api/users',
     method: 'GET',
   };
 
+  const { data, loading } = useFetch<UserResponseType>(options);
+
   useEffect(() => {
     setPageTitle('Users');
-    const { data, loading } = useFetch<UserResponseType>(options);
-
+    
     if (!loading && data) {
-      userList = (data as UserResponseType)?.data;
+      const userList: UserListType[] = (data as UserResponseType)?.data;
+      setUsers(userList)
     }
-  }, []);
+  }, [loading, data]);
 
   return (
     <div className="component-container">
@@ -35,7 +38,7 @@ const Users = () => {
         <tbody>
         <Suspense fallback="Loading...">
         {
-          userList.map((user) => (
+          users.map((user) => (
             <tr key={user.id}>
               <td>{user.first_name}</td>
               <td>{user.last_name}</td>

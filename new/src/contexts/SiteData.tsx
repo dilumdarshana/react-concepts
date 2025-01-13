@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, FC } from 'react';
-import { SiteDataContextType } from '../@types/siteDataContext.td';
-import { ChildProps } from '../@types/common.td';
+import { SiteDataContextType } from '../@types/siteDataContext';
+import { ChildProps } from '../@types/common';
 
 const SiteDataContext = createContext<SiteDataContextType | null>(null);
 

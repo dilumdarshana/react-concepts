@@ -1,6 +1,6 @@
 import { useState, createContext, FC } from 'react';
-import { ConterContextType } from '../@types/conterContext.td';
-import { ChildProps } from '../@types/common.td';
+import { ConterContextType } from '../@types/conterContext';
+import { ChildProps } from '../@types/common';
 
 const CounterContext = createContext<ConterContextType | null>(null);
 

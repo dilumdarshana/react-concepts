@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-import { Link } from 'react-router';
 import SiteDataContext from '../../contexts/SiteData';
-import { SiteDataContextType } from '../../@types/siteDataContext.td';
+import { SiteDataContextType } from '../../@types/siteDataContext';
 
 const Header = () => {
   const { title } = useContext(SiteDataContext) as SiteDataContextType;
