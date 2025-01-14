@@ -15,7 +15,13 @@ const LeftMenu = () => {
             <Link to="/form">Form</Link>
           </li>
           <li>
-            <Link to="/hooks">Hooks</Link>
+            <Link to="/transition">Transition</Link>
+          </li>
+          <li>
+            <Link to="/hooks">Hooks 1</Link>
+          </li>
+          <li>
+          <Link to="/">Debounce</Link>
           </li>
         </ul>
       </nav>

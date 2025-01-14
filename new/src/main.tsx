@@ -9,6 +9,7 @@ import Users from './pages/Users';
 import Hooks from './pages/Hooks';
 import { SiteDataProvider } from './contexts/SiteData';
 import WithErrorBoundary from './components/common/WithErrorBoundary';
+import Transition from './pages/Transition';
 import './index.css';
 
 // wrapped with error boundary
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/' element={<Home />} />
             <Route path='/form' element={<Form />} />
             <Route path='/users' element={<UserWithErrorBoundary />} />
+            <Route path='/transition' element={<Transition />} />
             <Route path='/hooks' element={<Hooks />} />
           </Route>
         </Routes>
