@@ -1,9 +1,13 @@
+/**
+ * useTransition - stop freezing the broswer for cpu extensive works (make low priority). This basically,
+ * allow other processes to run smoothly, while executing expensive operations
+ */
 import { useContext, useEffect, useState, useTransition } from 'react';
 import SiteDataContext from '../contexts/SiteData';
 import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Transition = () => {
-  const { setPageTitle } = useContext(SiteDataContext) as SiteDataContextType;
+  const { setPageTitle, setPageDescription } = useContext(SiteDataContext) as SiteDataContextType;
   const [input, setInput] = useState('');
   const [list, setList] = useState<string[]>([]);
   const [isPending, startTransition] = useTransition();
@@ -12,12 +16,13 @@ const Transition = () => {
 
   useEffect(() => {
     setPageTitle('Transition');
+    setPageDescription('');
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
 
-    startTransition(() => {
+    startTransition(() => { // low priority peice
       const l = [];
       for (let i = 0; i < LIST_SIZE; i++) {
         l.push(e.target.value);

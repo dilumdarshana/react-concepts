@@ -8,11 +8,12 @@ import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Home = () => {
   const { setCounter } = useContext(CounterContext) as ConterContextType;
-  const { setPageTitle } = useContext(SiteDataContext) as SiteDataContextType;
+  const { setPageTitle, setPageDescription } = useContext(SiteDataContext) as SiteDataContextType;
   const [state, dispatch] = useReducer(counterReducer, { count: 1});
 
   useEffect(() => {
     setPageTitle('Home');
+    setPageDescription('');
   }, []);
 
   const updateFooter = () => {

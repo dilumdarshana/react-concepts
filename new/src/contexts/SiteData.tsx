@@ -6,14 +6,17 @@ const SiteDataContext = createContext<SiteDataContextType | null>(null);
 
 export const SiteDataProvider: FC<ChildProps> = ({ children }) => {
   const [title, setTitle] = useState<string>('Loading...');
+  const [description, setDescription] = useState<string>('');
 
   const values = {
     title,
+    description,
     setPageTitle: (title: string) => setTitle(title),
+    setPageDescription: (description: string) => setDescription(description),
   };
 
   useEffect(() => {
-    document.title = title
+    document.title = title;
   }, [title]);
 
   return (

@@ -18,10 +18,10 @@ const LeftMenu = () => {
             <Link to="/transition">Transition</Link>
           </li>
           <li>
-            <Link to="/hooks">Hooks 1</Link>
+          <Link to="/debounce">Debounce</Link>
           </li>
           <li>
-          <Link to="/">Debounce</Link>
+          <Link to="/useref">UseRef</Link>
           </li>
         </ul>
       </nav>

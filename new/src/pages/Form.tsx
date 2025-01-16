@@ -6,7 +6,7 @@ import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Form = () => {
   const randomId = useId();
-  const { setPageTitle } = useContext(SiteDataContext) as SiteDataContextType; 
+  const { setPageTitle, setPageDescription } = useContext(SiteDataContext) as SiteDataContextType; 
   const [values, handleChange] = useForm<FormType>({
     firstName: '',
     lastName: '',
@@ -15,6 +15,7 @@ const Form = () => {
 
   useEffect(() => {
     setPageTitle('Form');
+    setPageDescription('');
   }, []);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
