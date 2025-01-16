@@ -13,8 +13,8 @@ const Home = () => {
 
   useEffect(() => {
     setPageTitle('Home');
-    setPageDescription('');
-  }, []);
+    setPageDescription('useReducer, useContext hooks with dispatch');
+  });
 
   const updateFooter = () => {
     setCounter(state.count);

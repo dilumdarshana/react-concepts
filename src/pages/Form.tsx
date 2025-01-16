@@ -15,8 +15,8 @@ const Form = () => {
 
   useEffect(() => {
     setPageTitle('Form');
-    setPageDescription('');
-  }, []);
+    setPageDescription('useId hook and useForm custom hook');
+  });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

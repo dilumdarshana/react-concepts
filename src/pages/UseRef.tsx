@@ -9,7 +9,7 @@ const UseRef = () => {
     useEffect(() => {
       setPageTitle('useRef');
       setPageDescription('This is a React Hook that lets you reference a value that’s not needed for rendering.');
-    }, []);
+    });
 
     const disableBox = useCallback(() => {
         myRef.current?.setAttribute('disabled', 'true');

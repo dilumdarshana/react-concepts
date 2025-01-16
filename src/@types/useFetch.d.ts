@@ -6,4 +6,5 @@ export interface UseFetchOptionTypes {
 export interface FetchState<T> {
   loading: boolean;
   data: T;
+  error: string | null;
 }

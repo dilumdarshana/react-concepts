@@ -6,18 +6,21 @@ import SiteDataContext from '../contexts/SiteData';
 import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Users = () => {
-  const { setPageTitle } = useContext(SiteDataContext) as SiteDataContextType;
+  const { setPageTitle, setPageDescription } = useContext(SiteDataContext) as SiteDataContextType;
   const [users, setUsers] = useState<UserListType[]>([]);
   const options: UseFetchOptionTypes = {
     url: 'https://reqres.in/api/users',
     method: 'GET',
   };
 
-  const { data, loading } = useFetch<UserResponseType>(options);
+  const { data, loading, error, retry } = useFetch<UserResponseType>(options);
 
   useEffect(() => {
     setPageTitle('Users');
-    
+    setPageDescription('useFetch custom hook to retrieve users fro API');
+  });
+
+  useEffect(() => {
     if (!loading && data) {
       const userList: UserListType[] = (data as UserResponseType)?.data;
       setUsers(userList)
@@ -38,6 +41,11 @@ const Users = () => {
         <tbody>
         <Suspense fallback="Loading...">
         {
+          error ? (<tr>
+            <td colSpan={3}>
+              <button onClick={retry}>Retry</button>
+            </td>
+          </tr>) :
           users.map((user) => (
             <tr key={user.id}>
               <td>{user.first_name}</td>

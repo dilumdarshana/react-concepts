@@ -16,8 +16,8 @@ const Transition = () => {
 
   useEffect(() => {
     setPageTitle('Transition');
-    setPageDescription('');
-  }, []);
+    setPageDescription('useTransition hook');
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);

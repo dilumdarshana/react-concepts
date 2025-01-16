@@ -11,7 +11,7 @@ const List = ({ input }: { input: string }) => {
     }
   
     return list;
-  }, [input, deferredValue]);
+  }, [deferredValue]);
 
   useEffect(() => {
     console.log('xxx', input, deferredValue);
