@@ -27,6 +27,7 @@
     - useFetch
     - useForm
     - useLocalStorage
+    - usePrevious
 
 - Experimental hooks
   - use: To handle promises, contexts, etc

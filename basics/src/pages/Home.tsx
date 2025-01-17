@@ -5,6 +5,7 @@ import counterReducer from '../reducers/couter';
 import { INCREMENT, DECREMENT } from '../constants/action_types/counter';
 import SiteDataContext from '../contexts/SiteData';
 import { SiteDataContextType } from '../@types/siteDataContext';
+import usePrevious from '../hooks/usePrevious';
 
 const Home = () => {
   const { setCounter } = useContext(CounterContext) as ConterContextType;
@@ -16,6 +17,9 @@ const Home = () => {
     setPageDescription('useReducer, useContext hooks with dispatch');
   });
 
+  // demonstrate the custom hook
+  const previousCount = usePrevious<number>(state.count);
+
   const updateFooter = () => {
     setCounter(state.count);
   };
@@ -24,7 +28,7 @@ const Home = () => {
     <div className="component-container home-component">
       <h2>[Home]</h2>
       <p>
-        My count is {state.count}
+        My current count is {state.count}, previous count is {previousCount}
         <button onClick={() => dispatch({ type: INCREMENT })}>+</button>
         <button onClick={() => dispatch({ type: DECREMENT })}>-</button>
       </p>
