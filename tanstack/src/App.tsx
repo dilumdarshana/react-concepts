@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 interface ResponseType {
-  title: string;
+  title: string
 }
 
 function App() {

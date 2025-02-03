@@ -11,3 +11,12 @@
 - react-touter V7
 - express
 - pnpm
+
+## react-zustand (Simple state mangement)
+- vite
+- zustand
+
+## tanstack (react query)
+- vite
+- tanstack
+- eslint
