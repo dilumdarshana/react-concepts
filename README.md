@@ -16,7 +16,7 @@
 - vite
 - zustand
 
-## tanstack (react query)
+## tanstack (react query, table, router, form)
 - vite
 - tanstack
 - eslint
