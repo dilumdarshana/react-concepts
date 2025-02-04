@@ -12,7 +12,7 @@ const LeftMenu = () => {
             <Link to="/use-suspense">useSuspenseQuery</Link>
           </li>
           <li>
-            <Link to="/use-query-multiple">Multiple useQueries Async</Link>
+            <Link to="/use-query-multiple-async">Multiple useQueries Async</Link>
           </li>
           <li>
             <Link to="/use-query-multiple-sync">Multiple useQueries Sync</Link>
