@@ -1,15 +1,31 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router';
+import UseQuery from './pages/UseQuery';
+import UseSuspenseQuery from './pages/UseSuspenseQuery';
+import Layout from './layouts/Layout';
 import './index.css';
-import App from './App.tsx';
+import UseQueryWIthParams from './pages/UseQueryWIthParams';
+import UseQueriesAsync from './pages/UseQueriesAsync';
+import UseQueriesSync from './pages/UseQueriesSync';
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />} >
+            <Route path='/' element={<UseQuery />} />
+            <Route path='/use-suspense' element={<UseSuspenseQuery />} />
+            <Route path='/use-query-multiple-async' element={<UseQueriesAsync />} />
+            <Route path='/use-query-multiple-sync' element={<UseQueriesSync />} />
+            <Route path='/usequery-params' element={<UseQueryWIthParams />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 )
