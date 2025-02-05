@@ -94,3 +94,9 @@ table.users, th, td {
 table.users tr:nth-child(even){ background-color: #f2f2f2; }
 
 table.users tr:hover { background-color: #ddd; }
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 5px;
+}

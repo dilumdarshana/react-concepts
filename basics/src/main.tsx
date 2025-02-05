@@ -10,6 +10,7 @@ import Transition from './pages/Transition';
 import Debounce from './pages/Debounce';
 import UseRef from './pages/UseRef';
 import { UserWithErrorBoundary } from './components/WithErrorBoundary';
+import ReactHookForm from './pages/ReactHookForm';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <Route element={<DefaultLayout />}>
             <Route path='/' element={<Home />} />
             <Route path='/form' element={<Form />} />
+            <Route path='/react-hook-form' element={<ReactHookForm />} />
             <Route path='/users' element={<UserWithErrorBoundary />} />
             <Route path='/transition' element={<Transition />} />
             <Route path='/debounce' element={<Debounce />} />

@@ -20,3 +20,7 @@
 - vite
 - tanstack
 - eslint
+
+## boilerplate
+- react-router
+- tailwindcss

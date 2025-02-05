@@ -39,6 +39,20 @@
 - Other terms
   - Suspense: Use with asynchorinous calls to show something like 'loading...' state. Work inside conditions and loops unlike other hooks
 
+## 3rd party utils
+
+- react-form-hooks
+  ```bash
+  # adding module to the project
+  pnpm add react-form-hook
+  ```
+  - Add zod schema validation. zod in a good combination of react-form-hooks
+  ```bash
+  # add zod and suported module to the project
+  pnpm add zod @hookform/resolvers
+  ```
+  - API Doc: [Link] https://react-hook-form.com/docs
+
 ## How to run
 ```bash
 pnpm start
