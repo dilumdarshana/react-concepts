@@ -7,8 +7,8 @@ const Header = () => {
 
   return (
     <div className="component-container header">
-      <h2>Welcome! [Page Title: {title}]</h2>
-      <p className="description">{description}</p>
+      <h2 className="title">Welcome! [Page Title: {title}]</h2>
+      <pre className="description">{description}</pre>
     </div>
   );
 };

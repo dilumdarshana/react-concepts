@@ -15,7 +15,10 @@ const Form = () => {
 
   useEffect(() => {
     setPageTitle('Form');
-    setPageDescription('useId hook and useForm custom hook');
+    setPageDescription(`
+      useId: to generare random id
+      useForm: (custom hook) something line react hook form
+    `);
   });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

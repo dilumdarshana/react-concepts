@@ -28,7 +28,14 @@ body {
 }
 
 .header .description {
-  font-size: 13px;
+  font-size: 12px;
+  white-space: pre-wrap;
+  margin-top: 0px;
+
+}
+
+.header .title {
+  margin: 2px;
 }
 
 .left-navigation ul {

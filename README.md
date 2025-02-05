@@ -4,6 +4,7 @@
 - hooks
 - context
 - react-router V7
+- react-form-hook with zod
 - pnpm
 
 ## SSR (Server Side Rendering)
@@ -24,3 +25,4 @@
 ## boilerplate
 - react-router
 - tailwindcss
+- pnpm

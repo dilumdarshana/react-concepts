@@ -17,6 +17,8 @@
   -  useRef: Can make reference to DOM elements without HTML query selector like document.getElementById(..)
   -  useTransition: Can make expensive executions low priority
   -  useDeferredValue: Replication for debounce
+  -  useMemo: To memorise the complex calculations
+  -  useLayoutEffect: 
   -  useId: To generate random ID
     
 - Custom hooks: 
@@ -52,6 +54,9 @@
   pnpm add zod @hookform/resolvers
   ```
   - API Doc: [Link] https://react-hook-form.com/docs
+
+- redux (RTK)
+
 
 ## How to run
 ```bash

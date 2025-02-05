@@ -17,7 +17,11 @@ const Users = () => {
 
   useEffect(() => {
     setPageTitle('Users');
-    setPageDescription('useFetch custom hook to retrieve users fro API');
+    setPageDescription(`
+      useState,
+      useEffetct: trigger after screen get printed,
+      useFetch: (custom hook) to retrieve users fro API
+    `);
   });
 
   useEffect(() => {

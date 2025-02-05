@@ -14,7 +14,11 @@ const Home = () => {
 
   useEffect(() => {
     setPageTitle('Home');
-    setPageDescription('useReducer, useContext hooks with dispatch');
+    setPageDescription(`
+      useEffect: (hook) Asynchronous. This get executed after the render is painted to the screen. 
+      useReducer
+      useContext hooks with dispatch
+    `);
   });
 
   // demonstrate the custom hook

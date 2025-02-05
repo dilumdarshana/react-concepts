@@ -34,7 +34,10 @@ const ReactHookForm: React.FC = () => {
 
   useEffect(() => {
     setPageTitle('React Hook Form');
-    setPageDescription('react-hook-form util');
+    setPageDescription(`
+      react-hook-form: easy way to handle forms and form submissions
+      zod: schema validation rules
+    `);
   });
 
   const onSubmit: SubmitHandler<FormType> = async (data) => {

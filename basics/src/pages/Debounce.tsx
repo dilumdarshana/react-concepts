@@ -12,9 +12,7 @@ const Debounce = () => {
 
   useEffect(() => {
     setPageTitle('Debounce');
-    setPageDescription(`useDeferredValue hook. This will stop being frozen component from 
-      CPU extensive works (make low priority). This basically, allow other processes to run smoothly,
-      while executing expensive operations.`);
+    setPageDescription(`useDeferredValue: (hook) This will stop being frozen component from CPU extensive works (make low priority). This basically, allow other processes to run smoothly, while executing expensive operations.`);
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

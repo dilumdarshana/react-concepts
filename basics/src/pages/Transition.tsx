@@ -16,7 +16,9 @@ const Transition = () => {
 
   useEffect(() => {
     setPageTitle('Transition');
-    setPageDescription('useTransition hook');
+    setPageDescription(`
+      useTransition: (hook) stop freezing the broswer for cpu extensive works (make low priority). This basically, allow other processes to run smoothly, while executing expensive operations
+    `);
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

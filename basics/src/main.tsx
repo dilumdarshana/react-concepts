@@ -11,6 +11,8 @@ import Debounce from './pages/Debounce';
 import UseRef from './pages/UseRef';
 import { UserWithErrorBoundary } from './components/WithErrorBoundary';
 import ReactHookForm from './pages/ReactHookForm';
+import UseLayoutEffect from './pages/UseLayoutEffect';
+import HowReactWorks from './pages/HowReactWorks';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -27,6 +29,8 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/transition' element={<Transition />} />
             <Route path='/debounce' element={<Debounce />} />
             <Route path='/useref' element={<UseRef />} />
+            <Route path='/use-layout-effect' element={<UseLayoutEffect />} />
+            <Route path='/how-react-works' element={<HowReactWorks />} />
           </Route>
         </Routes>
       </CounterProvider>
