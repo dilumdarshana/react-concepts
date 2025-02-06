@@ -13,7 +13,8 @@
   -  useReducer: Functional level reducer
   -  useContext: Usage of context API
   -  useCallback: Stop rebinding functions on re render
-  -  useEffect: Equivalent to component did mount
+  -  useEffect: Equivalent to component did mount. Trigger after DOM printed to the screen
+  -  useLayoutEffect: This will trigger before DOM get printed to the screen
   -  useRef: Can make reference to DOM elements without HTML query selector like document.getElementById(..)
   -  useTransition: Can make expensive executions low priority
   -  useDeferredValue: Replication for debounce
@@ -54,9 +55,6 @@
   pnpm add zod @hookform/resolvers
   ```
   - API Doc: [Link] https://react-hook-form.com/docs
-
-- redux (RTK)
-
 
 ## How to run
 ```bash

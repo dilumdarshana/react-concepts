@@ -22,6 +22,9 @@
 - tanstack
 - eslint
 
+## RTK (Redux Tool Kit)
+
+
 ## boilerplate
 - react-router
 - tailwindcss

@@ -15,6 +15,8 @@ const UseLayoutEffect = () => {
   // useLayoutEffect is used to manipulate the DOM before it's painted. Not line useEffect
   useLayoutEffect(() => {
     setTextContent('Text updated before screen get printed. User will not see the Initial Text');
+
+    return () => console.log('runs')
   }, []);
 
   return (
