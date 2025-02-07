@@ -1,6 +1,16 @@
-import { useGetUsersQuery, useCreateUserQuery } from '../services/userApi';
+import { useGetUsersQuery } from '@/services/userApi';
+import ConfirmDialog from '@/components/ConfirmDialog';
+import { useState } from 'react';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 function Users() {
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState({});
   const { data, error, isLoading } = useGetUsersQuery();
 
   if (error) {
@@ -9,6 +19,23 @@ function Users() {
 
   if (isLoading) {
     return <p>Loading users...</p>;
+  }
+
+  const handleDeleteClick = (user: User) => {
+    setItemToDelete(user);
+    setShowDeleteDialog(true);
+  }
+
+  const handleDlete = () => {
+    console.log('xx', itemToDelete);
+    setShowDeleteDialog(false);
+
+    // delete from server
+    // TBD
+  }
+
+  const handleCancel = () => {
+    setShowDeleteDialog(false);
   }
 
   return (
@@ -30,13 +57,14 @@ function Users() {
                 <td className="px-6 py-3 text-gray-600">{user.email}</td>
                 <td className="px-6 py-3">
                   <button className="text-blue-600 hover:underline mr-3">Edit</button>
-                  <button className="text-red-600 hover:underline">Delete</button>
+                  <button className="text-red-600 hover:underline" onClick={() => handleDeleteClick(user)}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <ConfirmDialog showDeleteDialog={showDeleteDialog} handleCancel={handleCancel} handleDelete={handleDlete} />
     </div>
   )
 }
