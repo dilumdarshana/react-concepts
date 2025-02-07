@@ -20,8 +20,10 @@ pnpm add @reduxjs/toolkit react-redux
 
 # 4. Create slice
 
-# Adding shadcn/ui to the project
-npx shadcn-ui@latest init
+# Adding shadcn/ui to the project. Note, at this movement, shadcn/ui doesn't work well with
+# tailwind 4.x. Therefore, we need to use tailwind 3.x until issue get resolved.
+# issue: https://github.com/shadcn-ui/ui/issues/6446
+pnpm dlx shadcn@latest init
 ```
 ## Terms explained
 - reducer - How to update the state. 
