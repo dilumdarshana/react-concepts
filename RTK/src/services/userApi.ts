@@ -21,8 +21,18 @@ export const userApi = createApi({
         body: user,
       }),
     }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `users/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
 // export auto geneated hooks
-export const { useGetUsersQuery, useCreateUserMutation } = userApi;
+export const {
+  useGetUsersQuery,
+  useCreateUserMutation,
+  useDeleteUserMutation,
+} = userApi;

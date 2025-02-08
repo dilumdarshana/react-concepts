@@ -1,4 +1,5 @@
 # Redux Tool Kit - RTK (Vite + Typescript)
+- Simple user CRUD app
 
 ## What included
 - pnpm
@@ -24,6 +25,9 @@ pnpm add @reduxjs/toolkit react-redux
 # tailwind 4.x. Therefore, we need to use tailwind 3.x until issue get resolved.
 # issue: https://github.com/shadcn-ui/ui/issues/6446
 pnpm dlx shadcn@latest init
+
+# Adding Shadcn card component
+pnpm dlx shadcn@latest add card
 ```
 ## Terms explained
 - reducer - How to update the state. 
