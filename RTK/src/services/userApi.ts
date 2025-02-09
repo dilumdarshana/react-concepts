@@ -21,6 +21,13 @@ export const userApi = createApi({
         body: user,
       }),
     }),
+    editUser: builder.mutation<User, Partial<User>>({
+      query: (user) => ({
+        url: `users/${user.id}`,
+        method: 'PUT',
+        body: user,
+      }),
+    }),
     deleteUser: builder.mutation({
       query: (id) => ({
         url: `users/${id}`,
@@ -34,5 +41,6 @@ export const userApi = createApi({
 export const {
   useGetUsersQuery,
   useCreateUserMutation,
+  useEditUserMutation,
   useDeleteUserMutation,
 } = userApi;

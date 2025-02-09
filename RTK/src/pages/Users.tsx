@@ -2,18 +2,34 @@ import { useState } from 'react';
 import UserForm from '@/features/users/UserForm';
 import UsersList from '@/features/users/UsersList';
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
 function Users() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [action, setAction] = useState<'add' | 'edit'>('add');
 
   const handleAddNewUser = () => {
-    setIsOpen(true)
+    setIsOpen(true);
+    setAction('add');
   }
+
+  const handleEditUser = (user: User) => {
+    setIsOpen(true);
+    setAction('edit');
+    setUser(user);
+  };
+
   return (
     <div className="p-0">
       <UserForm
-        user={null}
+        user={user}
         open={isOpen}
-        action={'add'}
+        action={action}
         onOpenChange={setIsOpen}
       />
       <div className="flex justify-between items-center mb-6">
@@ -25,7 +41,7 @@ function Users() {
           Add New
         </button>
       </div>
-      <UsersList />
+      <UsersList onEditUser={handleEditUser} />
     </div>
   )
 }

@@ -23,7 +23,15 @@
 - eslint
 
 ## RTK (Redux Tool Kit)
-
+- vite
+- redux toolkit
+- zod
+- tailwind
+- shadcn
+- react hook form
+- react router 7
+- lucide-react (for icons)
+- pnpm
 
 ## boilerplate
 - react-router

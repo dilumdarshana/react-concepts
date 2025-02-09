@@ -10,7 +10,7 @@ import {
 import { z } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useCreateUserMutation } from '@/services/userApi';
+import { useCreateUserMutation, useEditUserMutation } from '@/services/userApi';
 import { AppDispatch } from '@/store';
 import { userUpdated } from './usersSlice';
 
@@ -49,7 +49,14 @@ const UserForm: React.FC<UserFormPropTypes> = ({ user, open, onOpenChange, actio
     resolver: zodResolver(formSchema), // this is mandatory. Validation not working without this
   });
   const [ createUser, { isLoading: createUserLoading }] = useCreateUserMutation();
+  const [editUser, { isLoading: editUserLoading }] = useEditUserMutation();
   const dispath: AppDispatch = useDispatch();
+
+  useEffect(() => {
+    if (user && action === 'edit') {
+      reset({ name: user?.name, email: user?.email });
+    }
+  }, [user, reset]);
 
   useEffect(() => {
     if (open) {
@@ -68,7 +75,11 @@ const UserForm: React.FC<UserFormPropTypes> = ({ user, open, onOpenChange, actio
   // submit form
   const handleOnSubmit: SubmitHandler<FormType> = async (data) => {
     try {
-      await createUser(data);
+      if (action === 'add') {
+        await createUser(data);
+      } else {
+        await editUser({...data, id: user?.id });
+      }
       dispath(userUpdated(true));
       reset();
       handleOpenChange(false); // close the dialog after successful submission
@@ -110,9 +121,8 @@ const UserForm: React.FC<UserFormPropTypes> = ({ user, open, onOpenChange, actio
               type="submit"
               className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
               disabled={isSubmitting}
-              value={isSubmitting || createUserLoading ? 'Submitting...' : 'Submit'}
             >
-              Submit
+              {(isSubmitting || createUserLoading || editUserLoading) ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         </div>

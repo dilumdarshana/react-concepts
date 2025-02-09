@@ -5,13 +5,18 @@ import ConfirmDialog from '@/components/ConfirmDialog';
 import Loading from '@/components/Loading';
 import { RootState } from '@/store';
 
+// need to move types into a common location
 interface User {
   id: number;
   name: string;
   email: string;
 }
 
-function UsersList() {
+interface UsersListPropTypes {
+  onEditUser: (user: User) => void;
+}
+
+function UsersList({ onEditUser }: UsersListPropTypes) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<User | null>(null);
   const { refetch, data, error, isLoading } = useGetUsersQuery();
@@ -30,11 +35,13 @@ function UsersList() {
     return <Loading />;
   }
 
+  // get confirmation from user
   const handleDeleteClick = (user: User) => {
     setItemToDelete(user);
     setShowDeleteDialog(true);
   }
 
+  // delete user from server
   const handleDlete = async () => {
     setShowDeleteDialog(false);
 
@@ -49,9 +56,15 @@ function UsersList() {
     }
   }
 
+  // hide confirm dialog
   const handleCancel = () => {
     setShowDeleteDialog(false);
   }
+
+  // edit user
+  const handleEditUser = (user: User) => {
+    onEditUser(user);
+  };
 
   return (
     <div>
@@ -70,7 +83,7 @@ function UsersList() {
                 <td className="px-6 py-3 text-gray-800">{user.name}</td>
                 <td className="px-6 py-3 text-gray-600">{user.email}</td>
                 <td className="px-6 py-3">
-                  <button className="text-blue-600 hover:underline mr-3">Edit</button>
+                  <button className="text-blue-600 hover:underline mr-3" onClick={() => handleEditUser(user)}>Edit</button>
                   <button className="text-red-600 hover:underline" onClick={() => handleDeleteClick(user)}>Delete</button>
                 </td>
               </tr>
