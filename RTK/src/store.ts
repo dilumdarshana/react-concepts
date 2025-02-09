@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from './features/theme/themeSlice';
+import usersReducer from './features/users/usersSlice';
 import { userApi } from './services/userApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
+    users: usersReducer,
     [userApi.reducerPath]: userApi.reducer, // register RTK Query reducer
   },
   middleware: (getDefaultMiddleware) => 

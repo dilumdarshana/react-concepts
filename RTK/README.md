@@ -26,8 +26,9 @@ pnpm add @reduxjs/toolkit react-redux
 # issue: https://github.com/shadcn-ui/ui/issues/6446
 pnpm dlx shadcn@latest init
 
-# Adding Shadcn card component
+# Adding Shadcn components
 pnpm dlx shadcn@latest add card
+pnpm dlx shadcn@latest add dialog
 ```
 ## Terms explained
 - reducer - How to update the state. 

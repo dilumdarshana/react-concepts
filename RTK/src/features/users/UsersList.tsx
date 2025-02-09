@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDeleteUserMutation, useGetUsersQuery } from '@/services/userApi';
 import ConfirmDialog from '@/components/ConfirmDialog';
 import Loading from '@/components/Loading';
+import { RootState } from '@/store';
 
 interface User {
   id: number;
@@ -14,6 +16,11 @@ function UsersList() {
   const [itemToDelete, setItemToDelete] = useState<User | null>(null);
   const { refetch, data, error, isLoading } = useGetUsersQuery();
   const [ deleteUser, { isLoading: deleteUserLoading }] = useDeleteUserMutation();
+  const userUpdated = useSelector((state: RootState) => state.users.userUpdated);
+
+  useEffect(() => {
+    if (userUpdated) refetch();
+  }, [userUpdated]);
 
   if (error) {
     return <p>Error fetching users:</p>;
