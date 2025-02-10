@@ -4,9 +4,9 @@
 - pnpm
 - react-router 7.x
 - tailwind 4.x
-- playwright - TBD
+- playwright
 - vitest
-- shadcn - TBD
+- shadcn - TBD (shadcn doesn't work well with Tailwind 4)
 
 ## How setup done
 ```bash

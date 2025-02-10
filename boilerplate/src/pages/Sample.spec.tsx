@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
 import Sample from './Sample';
 
 describe('Sample Page', () => {
