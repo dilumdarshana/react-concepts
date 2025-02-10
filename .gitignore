@@ -3,3 +3,5 @@ dist
 .cache
 .history
 .DS_Store
+
+testing

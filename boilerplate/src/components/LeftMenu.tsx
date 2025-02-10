@@ -10,7 +10,7 @@ const LeftMenu = () => {
             <Link className="block p-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition duration-200" to="/">Home</Link>
           </li>
           <li>
-            <Link className="block p-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition duration-200" to="/about">About</Link>
+            <Link className="block p-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition duration-200" to="/sample">Sample</Link>
           </li>
         </ul>
       </nav>

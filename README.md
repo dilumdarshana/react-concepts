@@ -33,6 +33,8 @@
 - lucide-react (for icons)
 - pnpm
 
+## Testing (Vite and Playwright)
+
 ## boilerplate
 - react-router
 - tailwindcss
