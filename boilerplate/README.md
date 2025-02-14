@@ -7,6 +7,7 @@
 - playwright
 - vitest
 - shadcn - TBD (shadcn doesn't work well with Tailwind 4)
+- path alias (@components, @pages, @)
 
 ## How setup done
 ```bash

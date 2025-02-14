@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UserForm from '@/features/users/UserForm';
-import UsersList from '@/features/users/UsersList';
+import UsersList from 'features/users/UsersList';
 
 interface User {
   id: number;
