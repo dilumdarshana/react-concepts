@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import LeftMenu from '@/components/LeftMenu';
+import LeftMenu from '../components/LeftMenu';
 
 const Default = () => {
   return (
