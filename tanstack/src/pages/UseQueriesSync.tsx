@@ -15,7 +15,7 @@ interface TodoResponseType {
 function UseQueriesSync() {
   // no dependency on the first query
   const { data: users, isPending: isUsersPending } = useQuery<UserResponseType[]>(createUserQueryOptions());
-  
+
   // the second call depends on the first query result
   const { data: todos = [], isPending: IsTodosPending } = useQuery<TodoResponseType[]>({
     ...createTodoQueryOptions(),
@@ -27,33 +27,33 @@ function UseQueriesSync() {
   }
 
   return (
-    <div className="container">
-      <h2>Users - useQuery (Sync)</h2>
+    <div>
+      <h2 className="text-2xl font-semibold pb-3">Users - useQuery (Sync)</h2>
       <ul>
         {
           users?.map((item) => (
-            <li key={item.id}>
+            <li className="p-1" key={item.id}>
               {item.email}
             </li>
           ))
         }
       </ul>
-     
-      <h2>Todos - useQueries</h2>
-      { IsTodosPending ? (<p>Loading Todos...</p>)
-      : (
-        <ul>
-          {
-            todos?.map((item) => (
-              <li key={item.id}>
-                {item.title}
-              </li>
-            ))
-          }
-        </ul>
+
+      <h2 className="text-2xl font-semibold pb-3 mt-2">Todos - useQueries</h2>
+      {IsTodosPending ? (<p>Loading Todos...</p>)
+        : (
+          <ul>
+            {
+              todos?.map((item) => (
+                <li className="p-1" key={item.id}>
+                  {item.title}
+                </li>
+              ))
+            }
+          </ul>
         )
       }
-  </div>
+    </div>
   )
 }
 

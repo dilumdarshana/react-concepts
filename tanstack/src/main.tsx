@@ -9,6 +9,7 @@ import './index.css';
 import UseQueryWIthParams from './pages/UseQueryWIthParams';
 import UseQueriesAsync from './pages/UseQueriesAsync';
 import UseQueriesSync from './pages/UseQueriesSync';
+import TanStackTable from './pages/TanStackTable';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/use-query-multiple-async' element={<UseQueriesAsync />} />
             <Route path='/use-query-multiple-sync' element={<UseQueriesSync />} />
             <Route path='/usequery-params' element={<UseQueryWIthParams />} />
+            <Route path='/tanstack-table' element={<TanStackTable />} />
           </Route>
         </Routes>
       </BrowserRouter>

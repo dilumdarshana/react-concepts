@@ -13,39 +13,39 @@ interface TodoResponseType {
 }
 
 function UseQueriesAsync() {
-  const [{ data: todos }, {data: users }] = useQueries({
+  const [{ data: todos }, { data: users }] = useQueries({
     queries: [
       createTodoQueryOptions(),
       createUserQueryOptions(),
     ],
   }) as [ // type assertion
-    { data: TodoResponseType[] },
-    { data: UserResponseType[] }
-  ];
+      { data: TodoResponseType[] },
+      { data: UserResponseType[] }
+    ];
 
   return (
-    <div className="container">
-      <h2>Users - useQueries</h2>
+    <div>
+      <h2 className="text-2xl font-semibold pb-3">Users - useQueries</h2>
       <ul>
         {
           users?.map((item) => (
-            <li key={item.id}>
+            <li className="p-1" key={item.id}>
               {item.email}
             </li>
           ))
         }
       </ul>
-      <h2>Todos - useQueries</h2>
+      <h2 className="text-2xl font-semibold pb-3 mt-2">Todos - useQueries</h2>
       <ul>
         {
           todos?.map((item) => (
-            <li key={item.id}>
+            <li className="p-1" key={item.id}>
               {item.title}
             </li>
           ))
         }
       </ul>
-  </div>
+    </div>
   )
 }
 

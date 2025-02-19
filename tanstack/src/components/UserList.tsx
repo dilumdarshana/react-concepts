@@ -7,7 +7,7 @@ interface ResponseType {
 }
 
 function UserList() {
-   // useSuspense allways guranteed to return a response
+  // useSuspense allways guranteed to return a response
   const { data, error } = useSuspenseQuery<ResponseType[]>({
     ...createUserQueryOptions(),
   });
@@ -17,12 +17,12 @@ function UserList() {
   }
 
   return (
-    <div className="container">
-      <h2>Users - useSuspenseQuery</h2>
+    <div>
+      <h2 className="text-2xl font-semibold pb-3 mt-2">Users - useSuspenseQuery</h2>
       <ul>
         {
           data.map((item) => (
-            <li key={item.id}>
+            <li className="p-1" key={item.id}>
               {item.email}
             </li>
           ))

@@ -21,12 +21,12 @@ function UseQuery() {
   }
 
   return (
-    <div className="container">
-      <h2>Todos - useQuery</h2>
+    <div className="">
+      <h2 className="text-2xl font-semibold pb-3">Todos - useQuery</h2>
       <ul>
         {
           data?.map((item) => (
-            <li key={item.id}>
+            <li className="p-1" key={item.id}>
               {item.title}
             </li>
           ))

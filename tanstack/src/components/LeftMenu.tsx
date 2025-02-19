@@ -2,27 +2,25 @@ import { Link } from 'react-router';
 
 const LeftMenu = () => {
   return (
-    <div className="component-container">
-      <nav className="left-navigation">
-        <ul>
-          <li>
-            <Link to="/">useQuery</Link>
-          </li>
-          <li>
-            <Link to="/use-suspense">useSuspenseQuery</Link>
-          </li>
-          <li>
-            <Link to="/use-query-multiple-async">Multiple useQueries Async</Link>
-          </li>
-          <li>
-            <Link to="/use-query-multiple-sync">Multiple useQueries Sync</Link>
-          </li>
-          <li>
-            <Link to="/usequery-params">useQuery with parameters</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav className="w-64 bg-gray-500 text-white p-4 rounded-md">
+      <ul className="space-y-2">
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/">useQuery</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/use-suspense">useSuspenseQuery</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/use-query-multiple-async">Multiple useQueries Async</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/use-query-multiple-sync">Multiple useQueries Sync</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/usequery-params">useQuery with parameters</Link>
+        </li>
+      </ul>
+    </nav>
   )
 }
 

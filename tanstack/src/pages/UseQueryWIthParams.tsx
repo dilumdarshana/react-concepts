@@ -23,13 +23,13 @@ function UseQueryWIthParams() {
   }
 
   return (
-    <div className="container">
-      <h2>Todos - useQuery</h2>
-      <button onClick={() => setPage((prev) => prev + 1)}>Get Next</button>
+    <div>
+      <h2 className="text-2xl font-semibold pb-3">Todos - useQuery</h2>
+      <button className="hover:bg-blue-500 border py-2 px-4 rounded-md" onClick={() => setPage((prev) => prev + 1)}>Get Next</button>
       <ul>
         {
           data?.map((item) => (
-            <li key={item.id}>
+            <li className="p-1" key={item.id}>
               {item.name}
             </li>
           ))

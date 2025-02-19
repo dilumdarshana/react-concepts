@@ -3,22 +3,22 @@ import LeftMenu from '../components/LeftMenu';
 
 const Default = () => {
   return (
-    <>
-    <div className="layout-row">
-      <div className="layout-left">
+    <div className="grid grid-cols-12 gap-4 p-4 min-h-screen">
+      <div className="col-span-4 md:col-span-3 gb-gray-800 rounded-lg shadow-md">
         <LeftMenu />
       </div>
-      <div className="layout-right">
-        <header>
-          <h2>Header</h2>
+      <div className="col-span-8 md:col-span-9 p-6 rounded-lg shadow-md">
+        <header className="bg-blue-100 p-3">
+          <h2 className="text-2xl font-bold">TanStack</h2>
         </header>
-        <Outlet />
-        <footer>
+        <main className="pt-2">
+          <Outlet />
+        </main>
+        <footer className="bg-gray-200 p-3 mt-5 mb-4">
           <p>&copy; 2025 My Website. All rights reserved.</p>
         </footer>
       </div>
     </div>
-    </>
   );
 };
 
