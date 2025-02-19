@@ -33,9 +33,12 @@
 - lucide-react (for icons)
 - pnpm
 
-## Testing (Vite and Playwright)
-
 ## boilerplate
-- react-router
-- tailwindcss
+- vite
+- react 19
+- react router 7
+- tailwindcss 4.x
+- shadcn (canary)
+- e2e test - playwright
+- unit test - vitest
 - pnpm
