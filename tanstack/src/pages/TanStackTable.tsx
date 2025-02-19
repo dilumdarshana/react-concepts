@@ -79,7 +79,7 @@ function TansStackTable() {
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-2xl text-bold">Users</h2>
+      <h2 className="text-2xl text-bold">Users - TanStack Table</h2>
       <div className="py-3 bt-white overflow-x-auto shadow-md rounded-lg">
         <div className="mb-4 relative">
           <input

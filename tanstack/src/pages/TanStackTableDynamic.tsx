@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
 import { LuArrowUpDown, LuChevronLeft, LuChevronRight, LuChevronsLeft, LuChevronsRight, LuSearch } from 'react-icons/lu';
@@ -49,9 +49,12 @@ const columns = [
 
 // react component
 function TansStackTableDynamic() {
-  //const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState<string>('');
   const [pagination, setPagination] = useState<PaginationType>({ pageIndex: 0, pageSize: 5 });
+
+  // minimul way of re render dom elements
+  const [, rerender] = useReducer(() => ({}), {});
 
   const { data, isPending, error } = useQuery<ResponseType>({
     ...createTodoPaginationQueryOptions(pagination),
@@ -63,17 +66,17 @@ function TansStackTableDynamic() {
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: {
-      // sorting,
-      globalFilter,
-      pagination,
+      sorting, // not dynamic
+      globalFilter, // not dynamic
+      pagination, // dynamic
     },
     manualPagination: true,
     debugTable: true,
     rowCount: data?.rowCount,
 
     // for sorting feature
-    // getSortedRowModel: getSortedRowModel(),
-    // onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
 
     // for filtering feature
     getFilteredRowModel: getFilteredRowModel(),
@@ -85,7 +88,7 @@ function TansStackTableDynamic() {
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-2xl text-bold">Todos</h2>
+      <h2 className="text-2xl text-bold">Todos - TanStack Table Dynamic</h2>
       <div className="py-3 bt-white overflow-x-auto shadow-md rounded-lg">
         <div className="mb-4 relative">
           <input
@@ -109,12 +112,12 @@ function TansStackTableDynamic() {
                         className="px-6 py-2 text-left traking-wider text-gray-500 tracking-wider"
                       >
                         <div
-                        // className={
-                        //   header.column.getCanSort()
-                        //     ? "cursor-pointer select-none flex items-center"
-                        //     : ""
-                        // }
-                        // onClick={header.column.getToggleSortingHandler()}
+                          className={
+                            header.column.getCanSort()
+                              ? "cursor-pointer select-none flex items-center"
+                              : ""
+                          }
+                          onClick={header.column.getToggleSortingHandler()}
                         >
                           {
                             flexRender(
@@ -229,6 +232,10 @@ function TansStackTableDynamic() {
           </button>
         </div>
       </div>
+
+      <button onClick={() => rerender()} className="border p-2 mt-4">
+        Click here to Rerender. Current time: {new Date().toLocaleTimeString()}
+      </button>
     </div>
   )
 }

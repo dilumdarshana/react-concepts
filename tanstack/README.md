@@ -6,6 +6,14 @@
   - useSuspenseQuery - guaranteed for data return. Compatible with react Suspense
   - useQueries - multiple queries
 - tanstack table
+  - load whole data set to the table
+    - pagination
+    - sort
+    - filter
+  - dynamically load chunks of data from API
+    - pagination
+    - sort - TBD
+    - filter - TBD
 
 ## How to setup
 ```bash

@@ -13,6 +13,10 @@ export default function createTodoQueryOptions(options: OptionsType) {
   };
 }
 
+/**
+ * Here we have a simulation of API. Actual API should return rows, rowCount and
+ * pageCount from the backend itself.
+ */
 const getTodos = async (options: OptionsType) => {
   // real API call here
   const response = await fetch('https://jsonplaceholder.typicode.com/todos');

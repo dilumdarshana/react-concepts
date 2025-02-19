@@ -19,7 +19,8 @@
 
 ## tanstack (react query, table, router, form)
 - vite
-- tanstack
+- tanstack query
+- tanstack table
 - eslint
 
 ## RTK (Redux Tool Kit)
