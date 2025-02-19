@@ -19,6 +19,9 @@ const LeftMenu = () => {
         <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
           <Link to="/usequery-params">useQuery with parameters</Link>
         </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/tanstack-table">TanStack Table</Link>
+        </li>
       </ul>
     </nav>
   )

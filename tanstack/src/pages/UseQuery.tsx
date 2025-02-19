@@ -26,7 +26,7 @@ function UseQuery() {
       <ul>
         {
           data?.map((item) => (
-            <li className="p-1" key={item.id}>
+            <li className="p-1 odd:bg-gray-200" key={item.id}>
               {item.title}
             </li>
           ))

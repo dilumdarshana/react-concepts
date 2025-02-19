@@ -32,7 +32,7 @@ function UseQueriesSync() {
       <ul>
         {
           users?.map((item) => (
-            <li className="p-1" key={item.id}>
+            <li className="p-1 odd:bg-gray-200" key={item.id}>
               {item.email}
             </li>
           ))
@@ -45,7 +45,7 @@ function UseQueriesSync() {
           <ul>
             {
               todos?.map((item) => (
-                <li className="p-1" key={item.id}>
+                <li className="p-1 odd:bg-gray-200" key={item.id}>
                   {item.title}
                 </li>
               ))

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
+import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
 import { useState } from 'react';
-import { LuArrowUpDown, LuSearch } from 'react-icons/lu';
+import { LuArrowUpDown, LuChevronLeft, LuChevronRight, LuChevronsLeft, LuChevronsRight, LuSearch } from 'react-icons/lu';
 
 interface UserType {
   id: string;
@@ -20,7 +20,7 @@ function randomUser(): UserType {
 
 // list of fake users
 const users = faker.helpers.multiple(randomUser, {
-  count: 10,
+  count: 100,
 });
 
 // tanstack table column helper
@@ -53,19 +53,17 @@ const columns = [
 function TansStackTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState<string>('');
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
   const table = useReactTable<UserType>(({
     data: users,
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: {
       sorting,
-      globalFilter
+      globalFilter,
+      pagination,
     },
-    initialState: {
-      pagination: {
-        pageSize: 5,
-      },
-    },
+
     // for sorting feature
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
@@ -73,6 +71,10 @@ function TansStackTable() {
     // for filtering feature
     getFilteredRowModel: getFilteredRowModel(),
     onGlobalFilterChange: setGlobalFilter,
+
+    // for pagination feature
+    getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
   }));
 
   return (
@@ -126,7 +128,7 @@ function TansStackTable() {
             {
               table.getRowModel().rows.length > 0 ? (
                 table.getRowModel().rows.map((row) => (
-                  <tr className="hover:bg-gray-300" key={row.id}>
+                  <tr className="hover:bg-gray-300 odd:bg-gray-200" key={row.id}>
                     {
                       row.getVisibleCells().map((cell) => (
                         <td className="p-2 whitespace-nowrap text-sm text-gray-500" key={cell.id}>
@@ -169,8 +171,49 @@ function TansStackTable() {
             }
           </select>
         </div>
-        <div>
-          b
+        <div className="flex justify-between items-center space-x-2">
+          <button
+            className="p-2 border border-gray-200 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+            onClick={() => table.firstPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <LuChevronsLeft size={20} />
+          </button>
+          <button
+            className="p-2 border border-gray-200 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <LuChevronLeft size={20} />
+          </button>
+          <input
+            min={1}
+            max={table.getPageCount()}
+            onChange={
+              (e) => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0
+                table.setPageIndex(page)
+              }
+            }
+            className="border border-gray-200 rounded-md w-16 p-2 text-center"
+            type="number"
+            value={table.getState().pagination.pageIndex + 1}
+          />
+          <span>of {table.getPageCount()}</span>
+          <button
+            className="p-2 border border-gray-200 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <LuChevronRight size={20} />
+          </button>
+          <button
+            className="p-2 border border-gray-200 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+            onClick={() => table.lastPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <LuChevronsRight size={20} />
+          </button>
         </div>
       </div>
     </div>

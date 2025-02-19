@@ -1,5 +1,5 @@
 
-export default function createCommentsQueryOptions (id: number) {
+export default function createCommentsQueryOptions(id: number) {
   return {
     queryKey: ['comments', id], // cache key. Mandatory to define here
     queryFn: () => getComments(id), // a fetichng function
