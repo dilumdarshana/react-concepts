@@ -22,6 +22,9 @@ const LeftMenu = () => {
         <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
           <Link to="/tanstack-table">TanStack Table</Link>
         </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/tanstack-table-dynamic">TanStack Table Dynamic</Link>
+        </li>
       </ul>
     </nav>
   )

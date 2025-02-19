@@ -9,10 +9,10 @@
 
 ## How to setup
 ```bash
-# add react query to the project
+# add tanstack query to the project
 pnpm add @tanstack/react-query
 
-# setup tanstack need tailwindcss intalled first
+# setup tanstack table need tailwindcss intalled first
 pnpm add tailwindcss @tailwindcss/vite
 
 # then install tanstack table

@@ -1,8 +1,10 @@
+import { keepPreviousData } from '@tanstack/react-query';
 
-export default function createTodoQueryOptions () {
+export default function createTodoQueryOptions() {
   return {
     queryKey: ['todos'], // cache key. Mandatory to define here
     queryFn: getTodos, // a fetichng function
+    placeholderData: keepPreviousData, // to stop UI blinking
   }
 }
 

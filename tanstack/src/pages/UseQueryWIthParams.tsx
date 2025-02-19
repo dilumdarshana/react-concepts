@@ -24,7 +24,7 @@ function UseQueryWIthParams() {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold pb-3">Todos - useQuery</h2>
+      <h2 className="text-2xl font-semibold pb-3">Todos - useQuery with params</h2>
       <button className="cursor-pointer bg-blue-300 border py-2 px-4 rounded-md mb-5" onClick={() => setPage((prev) => prev + 1)}>Get Next</button>
       <ul>
         {
