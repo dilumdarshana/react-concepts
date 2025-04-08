@@ -32,6 +32,9 @@ const LeftMenu = () => {
           <li>
             <Link to="/use-layout-effect">UseLayoutEffect</Link>
           </li>
+          <li>
+            <Link to="/use">Use</Link>
+          </li>
         </ul>
       </nav>
     </div>

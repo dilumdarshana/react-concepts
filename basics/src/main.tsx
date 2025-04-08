@@ -14,27 +14,29 @@ import ReactHookForm from './pages/ReactHookForm';
 import UseLayoutEffect from './pages/UseLayoutEffect';
 import HowReactWorks from './pages/HowReactWorks';
 import './index.css';
+import Use from './pages/Use';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-    <SiteDataProvider>
-      <CounterProvider>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path='/' element={<Home />} />
-            <Route path='/form' element={<Form />} />
-            <Route path='/react-hook-form' element={<ReactHookForm />} />
-            <Route path='/users' element={<UserWithErrorBoundary />} />
-            <Route path='/transition' element={<Transition />} />
-            <Route path='/debounce' element={<Debounce />} />
-            <Route path='/useref' element={<UseRef />} />
-            <Route path='/use-layout-effect' element={<UseLayoutEffect />} />
-            <Route path='/how-react-works' element={<HowReactWorks />} />
-          </Route>
-        </Routes>
-      </CounterProvider>
-    </SiteDataProvider>
+      <SiteDataProvider>
+        <CounterProvider>
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route path='/' element={<Home />} />
+              <Route path='/form' element={<Form />} />
+              <Route path='/react-hook-form' element={<ReactHookForm />} />
+              <Route path='/users' element={<UserWithErrorBoundary />} />
+              <Route path='/transition' element={<Transition />} />
+              <Route path='/debounce' element={<Debounce />} />
+              <Route path='/useref' element={<UseRef />} />
+              <Route path='/use-layout-effect' element={<UseLayoutEffect />} />
+              <Route path='/how-react-works' element={<HowReactWorks />} />
+              <Route path='/use' element={<Use />} />
+            </Route>
+          </Routes>
+        </CounterProvider>
+      </SiteDataProvider>
     </BrowserRouter>
   </StrictMode>,
 );
