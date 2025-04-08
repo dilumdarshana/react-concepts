@@ -20,7 +20,8 @@
   -  useDeferredValue: Replication for debounce
   -  useMemo: To memorise the complex calculations
   -  useId: To generate random ID
-    
+  -  use: React API that lets you read the value of a resource like a Promise or context
+
 - Custom hooks: 
   - Rules:
     - Hooks inside hooks are allowed
@@ -30,9 +31,6 @@
     - useForm
     - useLocalStorage
     - usePrevious
-
-- Experimental hooks
-  - use: To handle promises, contexts, etc
 
 - Context API
 
