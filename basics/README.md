@@ -19,7 +19,6 @@
   -  useTransition: Can make expensive executions low priority
   -  useDeferredValue: Replication for debounce
   -  useMemo: To memorise the complex calculations
-  -  useLayoutEffect: 
   -  useId: To generate random ID
     
 - Custom hooks: 
@@ -47,7 +46,7 @@
 - react-form-hooks
   ```bash
   # adding module to the project
-  pnpm add react-form-hook
+  pnpm add react-hook-form
   ```
   - Add zod schema validation. zod in a good combination of react-form-hooks
   ```bash
