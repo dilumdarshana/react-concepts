@@ -21,6 +21,7 @@
 - vite
 - tanstack query
 - tanstack table
+- tanstack router
 - eslint
 
 ## RTK (Redux Tool Kit)
