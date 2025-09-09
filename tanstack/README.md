@@ -14,6 +14,7 @@
     - pagination
     - sort - TBD
     - filter - TBD
+- tanstack router
 
 ## How to setup
 ```bash

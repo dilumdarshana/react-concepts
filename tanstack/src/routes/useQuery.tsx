@@ -1,10 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 import createTodoQueryOptions from '../queryOptions/createTodoQueryOptions';
 
 interface ResponseType {
   id: string;
   title: string;
 }
+
+export const Route = createFileRoute('/useQuery')({
+  component: UseQuery,
+});
 
 function UseQuery() {
   const { data, isPending, error } = useQuery<ResponseType[]>({

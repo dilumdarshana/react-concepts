@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import { useQueries } from '@tanstack/react-query';
 import createTodoQueryOptions from '../queryOptions/createTodoQueryOptions';
 import createUserQueryOptions from '../queryOptions/createUserQueryOptions';
@@ -11,6 +12,10 @@ interface TodoResponseType {
   id: string;
   title: string;
 }
+
+export const Route = createFileRoute('/useQueriesAsync')({
+  component: UseQueriesAsync,
+});
 
 function UseQueriesAsync() {
   const [{ data: todos }, { data: users }] = useQueries({

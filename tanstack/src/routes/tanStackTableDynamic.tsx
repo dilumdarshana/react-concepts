@@ -1,30 +1,29 @@
-import { faker } from '@faker-js/faker';
-import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
 import { LuArrowUpDown, LuChevronLeft, LuChevronRight, LuChevronsLeft, LuChevronsRight, LuSearch } from 'react-icons/lu';
+import { createFileRoute } from '@tanstack/react-router';
+import createTodoPaginationQueryOptions from '../queryOptions/createTodoPaginationQueryOptions';
 
-interface UserType {
+interface ResponseRowType {
   id: string;
-  name: string;
-  email: string;
+  title: string;
+  completed: string;
 }
 
-// for faker
-function randomUser(): UserType {
-  return {
-    id: faker.string.ulid(),
-    name: faker.person.firstName(),
-    email: faker.internet.email(),
-  };
+interface ResponseType {
+  rows: ResponseRowType[];
+  rowCount: number;
+  pageCount: number;
 }
 
-// list of fake users
-const users = faker.helpers.multiple(randomUser, {
-  count: 100,
-});
+interface PaginationType {
+  pageIndex: number;
+  pageSize: number;
+}
 
 // tanstack table column helper
-const columnHelper = createColumnHelper<UserType>();
+const columnHelper = createColumnHelper<ResponseRowType>();
 
 // define headers
 const columns = [
@@ -34,35 +33,51 @@ const columns = [
     ),
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor('name', {
+  columnHelper.accessor('title', {
     header: () => (
       <div className="flex items-center text-bold">Name</div>
     ),
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor('email', {
-    id: 'email',
+  columnHelper.accessor('completed', {
+    id: 'completed',
     header: () => (
-      <div className="flex items-center text-bold">Email</div>
+      <div className="flex items-center text-bold">Status</div>
     ),
-    cell: (info) => info.getValue(),
+    cell: (info) => info.getValue().toString(),
   }),
 ];
 
+export const Route = createFileRoute('/tanStackTableDynamic')({
+  component: TansStackTableDynamic,
+});
+
 // react component
-function TansStackTable() {
+function TansStackTableDynamic() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState<string>('');
-  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
-  const table = useReactTable<UserType>(({
-    data: users,
+  const [pagination, setPagination] = useState<PaginationType>({ pageIndex: 0, pageSize: 5 });
+
+  // minimul way of re render dom elements
+  const [, rerender] = useReducer(() => ({}), {});
+
+  const { data, isPending, error } = useQuery<ResponseType>({
+    ...createTodoPaginationQueryOptions(pagination),
+    enabled: true, // can fetch data conditionally. False stop calling the query
+  });
+
+  const table = useReactTable<ResponseRowType>(({
+    data: data?.rows ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: {
-      sorting,
-      globalFilter,
-      pagination,
+      sorting, // not dynamic
+      globalFilter, // not dynamic
+      pagination, // dynamic
     },
+    manualPagination: true,
+    debugTable: true,
+    rowCount: data?.rowCount,
 
     // for sorting feature
     getSortedRowModel: getSortedRowModel(),
@@ -73,13 +88,12 @@ function TansStackTable() {
     onGlobalFilterChange: setGlobalFilter,
 
     // for pagination feature
-    getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
   }));
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-2xl text-bold">Users - TanStack Table</h2>
+      <h2 className="text-2xl text-bold">Todos - TanStack Table Dynamic</h2>
       <div className="py-3 bt-white overflow-x-auto shadow-md rounded-lg">
         <div className="mb-4 relative">
           <input
@@ -90,6 +104,7 @@ function TansStackTable() {
           />
           <LuSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
         </div>
+
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             {
@@ -126,27 +141,33 @@ function TansStackTable() {
           </thead>
           <tbody className="bt-white divide-y divide-gray-200">
             {
-              table.getRowModel().rows.length > 0 ? (
-                table.getRowModel().rows.map((row) => (
-                  <tr className="hover:bg-gray-300 odd:bg-gray-200" key={row.id}>
-                    {
-                      row.getVisibleCells().map((cell) => (
-                        <td className="p-2 whitespace-nowrap text-sm text-gray-500" key={cell.id}>
-                          {
-                            flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )
-                          }
-                        </td>
-                      ))
-                    }
-                  </tr>
-                ))
-              ) : (
+              isPending ? (
                 <tr>
-                  <td className="p-2 text-center text-red-700 text-sm" colSpan={columns.length}>No users found.</td>
+                  <td className="p-2 text-center text-blue-600 text-sm" colSpan={columns.length}>Loading...</td>
                 </tr>
+              ) : (
+                table.getRowModel().rows.length > 0 ? (
+                  table.getRowModel().rows.map((row) => (
+                    <tr className="hover:bg-gray-300 odd:bg-gray-200" key={row.id}>
+                      {
+                        row.getVisibleCells().map((cell) => (
+                          <td className="p-2 whitespace-nowrap text-sm text-gray-500" key={cell.id}>
+                            {
+                              flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )
+                            }
+                          </td>
+                        ))
+                      }
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td className="p-2 text-center text-red-700 text-sm" colSpan={columns.length}>No users found.</td>
+                  </tr>
+                )
               )
             }
           </tbody>
@@ -216,8 +237,12 @@ function TansStackTable() {
           </button>
         </div>
       </div>
+
+      <button onClick={() => rerender()} className="border p-2 mt-4">
+        Click here to Rerender. Current time: {new Date().toLocaleTimeString()}
+      </button>
     </div>
   )
 }
 
-export default TansStackTable;
+export default TansStackTableDynamic;

@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 import createTodoQueryOptions from '../queryOptions/createTodoQueryOptions';
 import createUserQueryOptions from '../queryOptions/createUserQueryOptions';
 
@@ -11,6 +12,10 @@ interface TodoResponseType {
   id: string;
   title: string;
 }
+
+export const Route = createFileRoute('/useQueriesSync')({
+  component: UseQueriesSync,
+});
 
 function UseQueriesSync() {
   // no dependency on the first query

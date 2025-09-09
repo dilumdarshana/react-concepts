@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 import createCommentsQueryOptions from '../queryOptions/createCommentsQueryOptions';
 
 interface ResponseType {
   id: string;
   name: string;
 }
+
+export const Route = createFileRoute('/useQueryWIthParams')({
+  component: UseQueryWIthParams,
+});
 
 function UseQueryWIthParams() {
   const [page, setPage] = useState(1);
