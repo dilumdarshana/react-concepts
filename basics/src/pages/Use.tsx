@@ -1,11 +1,11 @@
-import { Suspense, use, useContext, useEffect } from 'react';
+import { Suspense, use, useEffect } from 'react';
 import SiteDataContext from '../contexts/SiteData';
 import { SiteDataContextType } from '../@types/siteDataContext';
-import { UserResponseType } from '../@types/common';
+import { UserType } from '../@types/common';
 
-const fetchUsers = async (): Promise<UserResponseType> => {
+const fetchUsers = async (): Promise<UserType[]> => {
   try {
-    const response = await fetch('https://reqres.in/api/users');
+    const response = await fetch('https://63fed78dc5c800a7238698ea.mockapi.io/api/v1/users');
 
     return response.json();
   } catch (error) {
@@ -17,7 +17,7 @@ const fetchUserPromise = fetchUsers();
 
 const Use = () => {
   const { setPageTitle, setPageDescription } = use(SiteDataContext) as SiteDataContextType;
-  const { data } = use(fetchUserPromise);
+  const data = use(fetchUserPromise);
 
   useEffect(() => {
     setPageTitle('use');

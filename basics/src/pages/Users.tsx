@@ -1,5 +1,5 @@
 import { Suspense, useContext, useEffect, useState } from 'react';
-import { UserListType, UserResponseType } from '../@types/common';
+import { UserType } from '../@types/common';
 import { UseFetchOptionTypes } from '../@types/useFetch';
 import useFetch from '../hooks/useFetch';
 import SiteDataContext from '../contexts/SiteData';
@@ -7,13 +7,13 @@ import { SiteDataContextType } from '../@types/siteDataContext';
 
 const Users = () => {
   const { setPageTitle, setPageDescription } = useContext(SiteDataContext) as SiteDataContextType;
-  const [users, setUsers] = useState<UserListType[]>([]);
+  const [users, setUsers] = useState<UserType[]>([]);
   const options: UseFetchOptionTypes = {
-    url: 'https://reqres.in/api/users',
+    url: 'https://63fed78dc5c800a7238698ea.mockapi.io/api/v1/users',
     method: 'GET',
   };
 
-  const { data, loading, error, retry } = useFetch<UserResponseType>(options);
+  const { data, loading, error, retry } = useFetch<UserType[]>(options);
 
   useEffect(() => {
     setPageTitle('Users');
@@ -26,8 +26,8 @@ const Users = () => {
 
   useEffect(() => {
     if (!loading && data) {
-      const userList: UserListType[] = (data as UserResponseType)?.data;
-      setUsers(userList)
+      // const userList: UserListType[] = [data as UserResponseType];
+      setUsers(data);
     }
   }, [loading, data]);
 
@@ -50,7 +50,7 @@ const Users = () => {
               <button onClick={retry}>Retry</button>
             </td>
           </tr>) :
-          users.map((user) => (
+          users && users.map((user) => (
             <tr key={user.id}>
               <td>{user.first_name}</td>
               <td>{user.last_name}</td>
