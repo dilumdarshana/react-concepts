@@ -37,8 +37,12 @@ Run all commands **inside** the relevant subdirectory (`cd basics/ && ...`).
 ## Environment
 
 - Node: v24.15.0 (`.nvmrc`)
-- Package manager: pnpm (no npm/yarn)
+- Package manager: pnpm only (no npm/yarn) — all projects use `pnpm` commands
 - No tests, no CI/CD
+
+## Commit conventions
+
+Use conventional commits across all projects: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `style:`, `test:`. Keep messages short and scoped to the project directory.
 
 ## Style notes
 
