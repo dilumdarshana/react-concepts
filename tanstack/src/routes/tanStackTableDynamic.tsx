@@ -61,7 +61,7 @@ function TansStackTableDynamic() {
   // minimul way of re render dom elements
   const [, rerender] = useReducer(() => ({}), {});
 
-  const { data, isPending, error } = useQuery<ResponseType>({
+  const { data, isPending } = useQuery<ResponseType>({
     ...createTodoPaginationQueryOptions(pagination),
     enabled: true, // can fetch data conditionally. False stop calling the query
   });
