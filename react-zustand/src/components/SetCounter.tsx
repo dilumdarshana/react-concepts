@@ -4,15 +4,15 @@ import useStore from '../store/useStore';
 const SetCounter = () => {
   const { increment, decrement} = useStore();
 
-  useEffect(() => {
-    getCount();
-  }, []);
-
-  // sate can use outside of the component this way
+  // state can be accessed outside of the component this way
   const getCount = () => {
     const count = useStore.getState().count;
     console.log('count', count);
   };
+
+  useEffect(() => {
+    getCount();
+  }, []);
 
   // set outside of the component
   const setCount= () => {
