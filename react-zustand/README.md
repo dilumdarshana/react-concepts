@@ -1,20 +1,37 @@
-# React + typescript + Zustand (Another way to manage states for lightweight projects)
-- Good fit for lightweight projects. Better than React context API but not good as Redux
+# React + Zustand
 
-## how to setup
+Lightweight state management with Zustand — a simpler alternative to the Context API for small to medium projects.
+
+## Stack
+
+| Tool | |
+|------|-|
+| React | 19 |
+| Zustand | 5 |
+| Vite | 8 |
+| TypeScript | 6 |
+| ESLint | 10 (flat config) |
+
+## Commands
+
 ```bash
-# 1. install dependency
-pnpm add zustand
-
-# 2. create a store
-
-
-# 3. use store in component
+pnpm dev       # start dev server
+pnpm build     # tsc -b && vite build
+pnpm lint      # eslint .
+pnpm preview   # vite preview
 ```
 
-### start app
-```bash
-pnpm dev
+## Project structure
+
+```
+src/
+├── store/
+│   └── useStore.ts       # Zustand store (counter example)
+├── components/
+│   ├── SetCounter.tsx     # mutate & read outside component
+│   └── ShowCounter.tsx    # read via hook
+├── App.tsx
+└── main.tsx
 ```
 
-[Documentation](https://zustand.docs.pmnd.rs/getting-started/introduction)
+[Zustand docs](https://zustand.docs.pmnd.rs/getting-started/introduction)
