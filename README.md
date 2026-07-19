@@ -8,7 +8,7 @@ Learning monorepo with 6 independent React 19 projects. Each is fully self-conta
 |-----------|-------|
 | `template/` | Boilerplate — Vite + React 19 + TS 6 + Tailwind v4 + React Router v8 + Zustand + Playwright + ESLint |
 | `basics/` | React Router v8, React Hook Form + Zod, Context API |
-| `react-zustand/` | Zustand state management |
+| `react-zustand/` | Zustand — slices, selectors, async actions, devtools + persist middleware |
 | `RTK/` | Redux Toolkit + Tailwind v4 + shadcn/ui + lucide-react + React Hook Form + Zod |
 | `SSR/` | Express-based SSR (streaming + non-streaming) |
 | `tanstack/` | TanStack Query + Table + Router (file-based) |
