@@ -21,17 +21,35 @@ pnpm lint      # eslint .
 pnpm preview   # vite preview
 ```
 
+## Concepts demonstrated
+
+| Concept | Details |
+|---------|---------|
+| [Slice pattern](CONCEPTS.md#2-slice-pattern) | Split store into independent files (`counterSlice`, `uiSlice`, `todosSlice`) |
+| [Selectors](CONCEPTS.md#3-selectors-granular-subscriptions) | Granular subscriptions — `useStore(s => s.count)` to avoid wasted re-renders |
+| [useShallow](CONCEPTS.md#4-useshallow) | Shallow-compare multi-value selections without re-rendering on every change |
+| [Async actions](CONCEPTS.md#5-async-actions) | `async/await` in actions with loading/error/data state pattern |
+| [devtools](CONCEPTS.md#6-middleware) | Redux DevTools integration with named actions |
+| [persist](CONCEPTS.md#6-middleware) | localStorage persistence via `persist` middleware |
+| [subscribe()](CONCEPTS.md#7-subscribe-outside-react) | Listen to state changes outside the React tree |
+| [getState / setState](CONCEPTS.md#8-getstate--setstate-imperative-access) | Imperative read/write outside components |
+
 ## Project structure
 
 ```
 src/
 ├── store/
-│   └── useStore.ts       # Zustand store (counter example)
+│   ├── useStore.ts        # Composed store (devtools + persist middleware)
+│   ├── counterSlice.ts     # Counter state & actions
+│   ├── uiSlice.ts          # Theme state & actions
+│   └── todosSlice.ts       # Async data fetching (todos)
 ├── components/
-│   ├── SetCounter.tsx     # mutate & read outside component
-│   └── ShowCounter.tsx    # read via hook
-├── App.tsx
+│   ├── SetCounter.tsx      # useShallow, getState, setState
+│   ├── ShowCounter.tsx     # Granular selector (count only)
+│   ├── ShowTheme.tsx       # Granular selector (theme only)
+│   └── TodoList.tsx        # Async actions, subscribe()
+├── App.tsx                 # Theme sync to <html>, component grid
 └── main.tsx
 ```
 
-[Zustand docs](https://zustand.docs.pmnd.rs/getting-started/introduction)
+[Zustand docs](https://zustand.docs.pmnd.rs/learn/getting-started/introduction) | [Full concept reference →](CONCEPTS.md)
