@@ -52,4 +52,4 @@ src/
 └── main.tsx
 ```
 
-[Zustand docs](https://zustand.docs.pmnd.rs/learn/getting-started/introduction) | [Full concept reference →](CONCEPTS.md)
+<a href="https://zustand.docs.pmnd.rs/learn/getting-started/introduction" target="_blank">Zustand docs</a> | <a href="CONCEPTS.md" target="_blank">Full concept reference →</a>
