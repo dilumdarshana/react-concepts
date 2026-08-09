@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import { faker } from '@faker-js/faker';
-import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
+import {
+  columnFilteringFeature,
+  createColumnHelper,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  globalFilteringFeature,
+  rowPaginationFeature,
+  rowSortingFeature,
+  tableFeatures,
+  useTable,
+  type SortingState,
+} from '@tanstack/react-table';
 import { LuArrowUpDown, LuChevronLeft, LuChevronRight, LuChevronsLeft, LuChevronsRight, LuSearch } from 'react-icons/lu';
 import { createFileRoute } from '@tanstack/react-router';
 
@@ -24,11 +36,22 @@ const users = faker.helpers.multiple(randomUser, {
   count: 100,
 });
 
+// register the features used by this table
+const features = tableFeatures({
+  columnFilteringFeature,
+  globalFilteringFeature,
+  rowSortingFeature,
+  rowPaginationFeature,
+  sortedRowModel: createSortedRowModel(),
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+});
+
 // tanstack table column helper
-const columnHelper = createColumnHelper<UserType>();
+const columnHelper = createColumnHelper<typeof features, UserType>();
 
 // define headers
-const columns = [
+const columns = columnHelper.columns([
   columnHelper.accessor('id', {
     header: () => (
       <div className="flex items-center text-bold">ID</div>
@@ -48,7 +71,7 @@ const columns = [
     ),
     cell: (info) => info.getValue(),
   }),
-];
+]);
 
 export const Route = createFileRoute('/tanStackTable')({
   component: TansStackTable,
@@ -59,10 +82,10 @@ function TansStackTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState<string>('');
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
-  const table = useReactTable<UserType>(({
+  const table = useTable({
+    features,
     data: users,
     columns,
-    getCoreRowModel: getCoreRowModel(),
     state: {
       sorting,
       globalFilter,
@@ -70,17 +93,14 @@ function TansStackTable() {
     },
 
     // for sorting feature
-    getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
 
     // for filtering feature
-    getFilteredRowModel: getFilteredRowModel(),
     onGlobalFilterChange: setGlobalFilter,
 
     // for pagination feature
-    getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
-  }));
+  });
 
   return (
     <div className="flex flex-col">
@@ -115,9 +135,8 @@ function TansStackTable() {
                           onClick={header.column.getToggleSortingHandler()}
                         >
                           {
-                            flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
+                            header.isPlaceholder ? null : (
+                              <table.FlexRender header={header} />
                             )
                           }
                           <LuArrowUpDown className="ml-2" size={14} />
@@ -135,14 +154,9 @@ function TansStackTable() {
                 table.getRowModel().rows.map((row) => (
                   <tr className="hover:bg-gray-300 odd:bg-gray-200" key={row.id}>
                     {
-                      row.getVisibleCells().map((cell) => (
+                      row.getAllCells().map((cell) => (
                         <td className="p-2 whitespace-nowrap text-sm text-gray-500" key={cell.id}>
-                          {
-                            flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )
-                          }
+                          <table.FlexRender cell={cell} />
                         </td>
                       ))
                     }
@@ -162,7 +176,7 @@ function TansStackTable() {
           <span className="mr-2">Items per page</span>
           <select
             className="border border-gray-300 rounded-md shadow-sm p-2"
-            value={table.getState().pagination.pageSize}
+            value={table.state.pagination.pageSize}
             onChange={
               (e) => {
                 table.setPageSize(Number(e.target.value))
@@ -202,7 +216,7 @@ function TansStackTable() {
             }
             className="border border-gray-200 rounded-md w-16 p-2 text-center"
             type="number"
-            value={table.getState().pagination.pageIndex + 1}
+            value={table.state.pagination.pageIndex + 1}
           />
           <span>of {table.getPageCount()}</span>
           <button

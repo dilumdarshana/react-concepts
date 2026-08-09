@@ -9,37 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as UseSuspenseQueryRouteImport } from './routes/useSuspenseQuery'
-import { Route as UseQueryWIthParamsRouteImport } from './routes/useQueryWIthParams'
-import { Route as UseQueryRouteImport } from './routes/useQuery'
-import { Route as UseQueriesSyncRouteImport } from './routes/useQueriesSync'
-import { Route as UseQueriesAsyncRouteImport } from './routes/useQueriesAsync'
-import { Route as TanStackTableDynamicRouteImport } from './routes/tanStackTableDynamic'
 import { Route as TanStackTableRouteImport } from './routes/tanStackTable'
+import { Route as TanStackTableDynamicRouteImport } from './routes/tanStackTableDynamic'
+import { Route as UseQueriesAsyncRouteImport } from './routes/useQueriesAsync'
+import { Route as UseQueriesSyncRouteImport } from './routes/useQueriesSync'
+import { Route as UseQueryRouteImport } from './routes/useQuery'
+import { Route as UseQueryWIthParamsRouteImport } from './routes/useQueryWIthParams'
+import { Route as UseSuspenseQueryRouteImport } from './routes/useSuspenseQuery'
 
-const UseSuspenseQueryRoute = UseSuspenseQueryRouteImport.update({
-  id: '/useSuspenseQuery',
-  path: '/useSuspenseQuery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseQueryWIthParamsRoute = UseQueryWIthParamsRouteImport.update({
-  id: '/useQueryWIthParams',
-  path: '/useQueryWIthParams',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseQueryRoute = UseQueryRouteImport.update({
-  id: '/useQuery',
-  path: '/useQuery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseQueriesSyncRoute = UseQueriesSyncRouteImport.update({
-  id: '/useQueriesSync',
-  path: '/useQueriesSync',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseQueriesAsyncRoute = UseQueriesAsyncRouteImport.update({
-  id: '/useQueriesAsync',
-  path: '/useQueriesAsync',
+const TanStackTableRoute = TanStackTableRouteImport.update({
+  id: '/tanStackTable',
+  path: '/tanStackTable',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TanStackTableDynamicRoute = TanStackTableDynamicRouteImport.update({
@@ -47,9 +27,29 @@ const TanStackTableDynamicRoute = TanStackTableDynamicRouteImport.update({
   path: '/tanStackTableDynamic',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TanStackTableRoute = TanStackTableRouteImport.update({
-  id: '/tanStackTable',
-  path: '/tanStackTable',
+const UseQueriesAsyncRoute = UseQueriesAsyncRouteImport.update({
+  id: '/useQueriesAsync',
+  path: '/useQueriesAsync',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseQueriesSyncRoute = UseQueriesSyncRouteImport.update({
+  id: '/useQueriesSync',
+  path: '/useQueriesSync',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseQueryRoute = UseQueryRouteImport.update({
+  id: '/useQuery',
+  path: '/useQuery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseQueryWIthParamsRoute = UseQueryWIthParamsRouteImport.update({
+  id: '/useQueryWIthParams',
+  path: '/useQueryWIthParams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseSuspenseQueryRoute = UseSuspenseQueryRouteImport.update({
+  id: '/useSuspenseQuery',
+  path: '/useSuspenseQuery',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -123,39 +123,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/useSuspenseQuery': {
-      id: '/useSuspenseQuery'
-      path: '/useSuspenseQuery'
-      fullPath: '/useSuspenseQuery'
-      preLoaderRoute: typeof UseSuspenseQueryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useQueryWIthParams': {
-      id: '/useQueryWIthParams'
-      path: '/useQueryWIthParams'
-      fullPath: '/useQueryWIthParams'
-      preLoaderRoute: typeof UseQueryWIthParamsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useQuery': {
-      id: '/useQuery'
-      path: '/useQuery'
-      fullPath: '/useQuery'
-      preLoaderRoute: typeof UseQueryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useQueriesSync': {
-      id: '/useQueriesSync'
-      path: '/useQueriesSync'
-      fullPath: '/useQueriesSync'
-      preLoaderRoute: typeof UseQueriesSyncRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useQueriesAsync': {
-      id: '/useQueriesAsync'
-      path: '/useQueriesAsync'
-      fullPath: '/useQueriesAsync'
-      preLoaderRoute: typeof UseQueriesAsyncRouteImport
+    '/tanStackTable': {
+      id: '/tanStackTable'
+      path: '/tanStackTable'
+      fullPath: '/tanStackTable'
+      preLoaderRoute: typeof TanStackTableRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tanStackTableDynamic': {
@@ -165,11 +137,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TanStackTableDynamicRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tanStackTable': {
-      id: '/tanStackTable'
-      path: '/tanStackTable'
-      fullPath: '/tanStackTable'
-      preLoaderRoute: typeof TanStackTableRouteImport
+    '/useQueriesAsync': {
+      id: '/useQueriesAsync'
+      path: '/useQueriesAsync'
+      fullPath: '/useQueriesAsync'
+      preLoaderRoute: typeof UseQueriesAsyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useQueriesSync': {
+      id: '/useQueriesSync'
+      path: '/useQueriesSync'
+      fullPath: '/useQueriesSync'
+      preLoaderRoute: typeof UseQueriesSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useQuery': {
+      id: '/useQuery'
+      path: '/useQuery'
+      fullPath: '/useQuery'
+      preLoaderRoute: typeof UseQueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useQueryWIthParams': {
+      id: '/useQueryWIthParams'
+      path: '/useQueryWIthParams'
+      fullPath: '/useQueryWIthParams'
+      preLoaderRoute: typeof UseQueryWIthParamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useSuspenseQuery': {
+      id: '/useSuspenseQuery'
+      path: '/useSuspenseQuery'
+      fullPath: '/useSuspenseQuery'
+      preLoaderRoute: typeof UseSuspenseQueryRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
