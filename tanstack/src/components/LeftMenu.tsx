@@ -20,6 +20,21 @@ const LeftMenu = () => {
           <Link to="/useQueryWIthParams">useQuery with parameters</Link>
         </li>
         <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/useMutation">useMutation</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/useInfiniteQuery">useInfiniteQuery</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/useQueryClient">useQueryClient</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/useIsFetching">useIsFetching / useIsMutating</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
+          <Link to="/cacheOptions">Cache Options</Link>
+        </li>
+        <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">
           <Link to="/tanStackTable">TanStack Table</Link>
         </li>
         <li className="text-lg hover:bg-gray-700 rounded cursor-pointer">

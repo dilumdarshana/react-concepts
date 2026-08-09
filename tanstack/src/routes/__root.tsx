@@ -15,7 +15,7 @@ const RootLayout = () => (
         <Outlet />
       </main>
       <footer className="bg-gray-200 p-3 mt-5 mb-4">
-        <p>&copy; 2025 My Website. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} My Website. All rights reserved.</p>
       </footer>
     </div>
     <TanStackRouterDevtools />

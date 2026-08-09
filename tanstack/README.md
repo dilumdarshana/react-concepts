@@ -22,6 +22,11 @@ Learning project for TanStack libraries with React 19, Vite 8, Tailwind CSS v4, 
 | `/useSuspenseQuery` | Suspense-compatible data fetching (guaranteed data) |
 | `/useQueriesSync` | Multiple related queries run in parallel via `useQueries` |
 | `/useQueriesAsync` | Independent queries fetched concurrently |
+| `/useMutation` | Mutations with optimistic updates and `invalidateQueries` |
+| `/useInfiniteQuery` | Infinite scroll / "Load More" pagination |
+| `/useQueryClient` | Imperative cache access: `prefetchQuery`, `setQueryData`, `removeQueries` |
+| `/useIsFetching` | Global fetching/mutating indicators via `useIsFetching` / `useIsMutating` |
+| `/cacheOptions` | Cache tuning: `staleTime`, `gcTime`, `retry`, `refetchOnWindowFocus`, `refetchInterval` |
 
 Query options are defined in `src/queryOptions/` as composable factories (`createTodoQueryOptions`, `createUserQueryOptions`, etc.).
 

@@ -9,14 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CacheOptionsRouteImport } from './routes/cacheOptions'
 import { Route as TanStackTableRouteImport } from './routes/tanStackTable'
 import { Route as TanStackTableDynamicRouteImport } from './routes/tanStackTableDynamic'
+import { Route as UseInfiniteQueryRouteImport } from './routes/useInfiniteQuery'
+import { Route as UseIsFetchingRouteImport } from './routes/useIsFetching'
+import { Route as UseMutationRouteImport } from './routes/useMutation'
 import { Route as UseQueriesAsyncRouteImport } from './routes/useQueriesAsync'
 import { Route as UseQueriesSyncRouteImport } from './routes/useQueriesSync'
 import { Route as UseQueryRouteImport } from './routes/useQuery'
+import { Route as UseQueryClientRouteImport } from './routes/useQueryClient'
 import { Route as UseQueryWIthParamsRouteImport } from './routes/useQueryWIthParams'
 import { Route as UseSuspenseQueryRouteImport } from './routes/useSuspenseQuery'
 
+const CacheOptionsRoute = CacheOptionsRouteImport.update({
+  id: '/cacheOptions',
+  path: '/cacheOptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TanStackTableRoute = TanStackTableRouteImport.update({
   id: '/tanStackTable',
   path: '/tanStackTable',
@@ -25,6 +35,21 @@ const TanStackTableRoute = TanStackTableRouteImport.update({
 const TanStackTableDynamicRoute = TanStackTableDynamicRouteImport.update({
   id: '/tanStackTableDynamic',
   path: '/tanStackTableDynamic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseInfiniteQueryRoute = UseInfiniteQueryRouteImport.update({
+  id: '/useInfiniteQuery',
+  path: '/useInfiniteQuery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseIsFetchingRoute = UseIsFetchingRouteImport.update({
+  id: '/useIsFetching',
+  path: '/useIsFetching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseMutationRoute = UseMutationRouteImport.update({
+  id: '/useMutation',
+  path: '/useMutation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UseQueriesAsyncRoute = UseQueriesAsyncRouteImport.update({
@@ -42,6 +67,11 @@ const UseQueryRoute = UseQueryRouteImport.update({
   path: '/useQuery',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UseQueryClientRoute = UseQueryClientRouteImport.update({
+  id: '/useQueryClient',
+  path: '/useQueryClient',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UseQueryWIthParamsRoute = UseQueryWIthParamsRouteImport.update({
   id: '/useQueryWIthParams',
   path: '/useQueryWIthParams',
@@ -54,75 +84,117 @@ const UseSuspenseQueryRoute = UseSuspenseQueryRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/cacheOptions': typeof CacheOptionsRoute
   '/tanStackTable': typeof TanStackTableRoute
   '/tanStackTableDynamic': typeof TanStackTableDynamicRoute
+  '/useInfiniteQuery': typeof UseInfiniteQueryRoute
+  '/useIsFetching': typeof UseIsFetchingRoute
+  '/useMutation': typeof UseMutationRoute
   '/useQueriesAsync': typeof UseQueriesAsyncRoute
   '/useQueriesSync': typeof UseQueriesSyncRoute
   '/useQuery': typeof UseQueryRoute
+  '/useQueryClient': typeof UseQueryClientRoute
   '/useQueryWIthParams': typeof UseQueryWIthParamsRoute
   '/useSuspenseQuery': typeof UseSuspenseQueryRoute
 }
 export interface FileRoutesByTo {
+  '/cacheOptions': typeof CacheOptionsRoute
   '/tanStackTable': typeof TanStackTableRoute
   '/tanStackTableDynamic': typeof TanStackTableDynamicRoute
+  '/useInfiniteQuery': typeof UseInfiniteQueryRoute
+  '/useIsFetching': typeof UseIsFetchingRoute
+  '/useMutation': typeof UseMutationRoute
   '/useQueriesAsync': typeof UseQueriesAsyncRoute
   '/useQueriesSync': typeof UseQueriesSyncRoute
   '/useQuery': typeof UseQueryRoute
+  '/useQueryClient': typeof UseQueryClientRoute
   '/useQueryWIthParams': typeof UseQueryWIthParamsRoute
   '/useSuspenseQuery': typeof UseSuspenseQueryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/cacheOptions': typeof CacheOptionsRoute
   '/tanStackTable': typeof TanStackTableRoute
   '/tanStackTableDynamic': typeof TanStackTableDynamicRoute
+  '/useInfiniteQuery': typeof UseInfiniteQueryRoute
+  '/useIsFetching': typeof UseIsFetchingRoute
+  '/useMutation': typeof UseMutationRoute
   '/useQueriesAsync': typeof UseQueriesAsyncRoute
   '/useQueriesSync': typeof UseQueriesSyncRoute
   '/useQuery': typeof UseQueryRoute
+  '/useQueryClient': typeof UseQueryClientRoute
   '/useQueryWIthParams': typeof UseQueryWIthParamsRoute
   '/useSuspenseQuery': typeof UseSuspenseQueryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/cacheOptions'
     | '/tanStackTable'
     | '/tanStackTableDynamic'
+    | '/useInfiniteQuery'
+    | '/useIsFetching'
+    | '/useMutation'
     | '/useQueriesAsync'
     | '/useQueriesSync'
     | '/useQuery'
+    | '/useQueryClient'
     | '/useQueryWIthParams'
     | '/useSuspenseQuery'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/cacheOptions'
     | '/tanStackTable'
     | '/tanStackTableDynamic'
+    | '/useInfiniteQuery'
+    | '/useIsFetching'
+    | '/useMutation'
     | '/useQueriesAsync'
     | '/useQueriesSync'
     | '/useQuery'
+    | '/useQueryClient'
     | '/useQueryWIthParams'
     | '/useSuspenseQuery'
   id:
     | '__root__'
+    | '/cacheOptions'
     | '/tanStackTable'
     | '/tanStackTableDynamic'
+    | '/useInfiniteQuery'
+    | '/useIsFetching'
+    | '/useMutation'
     | '/useQueriesAsync'
     | '/useQueriesSync'
     | '/useQuery'
+    | '/useQueryClient'
     | '/useQueryWIthParams'
     | '/useSuspenseQuery'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  CacheOptionsRoute: typeof CacheOptionsRoute
   TanStackTableRoute: typeof TanStackTableRoute
   TanStackTableDynamicRoute: typeof TanStackTableDynamicRoute
+  UseInfiniteQueryRoute: typeof UseInfiniteQueryRoute
+  UseIsFetchingRoute: typeof UseIsFetchingRoute
+  UseMutationRoute: typeof UseMutationRoute
   UseQueriesAsyncRoute: typeof UseQueriesAsyncRoute
   UseQueriesSyncRoute: typeof UseQueriesSyncRoute
   UseQueryRoute: typeof UseQueryRoute
+  UseQueryClientRoute: typeof UseQueryClientRoute
   UseQueryWIthParamsRoute: typeof UseQueryWIthParamsRoute
   UseSuspenseQueryRoute: typeof UseSuspenseQueryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/cacheOptions': {
+      id: '/cacheOptions'
+      path: '/cacheOptions'
+      fullPath: '/cacheOptions'
+      preLoaderRoute: typeof CacheOptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tanStackTable': {
       id: '/tanStackTable'
       path: '/tanStackTable'
@@ -135,6 +207,27 @@ declare module '@tanstack/react-router' {
       path: '/tanStackTableDynamic'
       fullPath: '/tanStackTableDynamic'
       preLoaderRoute: typeof TanStackTableDynamicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useInfiniteQuery': {
+      id: '/useInfiniteQuery'
+      path: '/useInfiniteQuery'
+      fullPath: '/useInfiniteQuery'
+      preLoaderRoute: typeof UseInfiniteQueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useIsFetching': {
+      id: '/useIsFetching'
+      path: '/useIsFetching'
+      fullPath: '/useIsFetching'
+      preLoaderRoute: typeof UseIsFetchingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useMutation': {
+      id: '/useMutation'
+      path: '/useMutation'
+      fullPath: '/useMutation'
+      preLoaderRoute: typeof UseMutationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/useQueriesAsync': {
@@ -158,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseQueryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/useQueryClient': {
+      id: '/useQueryClient'
+      path: '/useQueryClient'
+      fullPath: '/useQueryClient'
+      preLoaderRoute: typeof UseQueryClientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/useQueryWIthParams': {
       id: '/useQueryWIthParams'
       path: '/useQueryWIthParams'
@@ -176,11 +276,16 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  CacheOptionsRoute: CacheOptionsRoute,
   TanStackTableRoute: TanStackTableRoute,
   TanStackTableDynamicRoute: TanStackTableDynamicRoute,
+  UseInfiniteQueryRoute: UseInfiniteQueryRoute,
+  UseIsFetchingRoute: UseIsFetchingRoute,
+  UseMutationRoute: UseMutationRoute,
   UseQueriesAsyncRoute: UseQueriesAsyncRoute,
   UseQueriesSyncRoute: UseQueriesSyncRoute,
   UseQueryRoute: UseQueryRoute,
+  UseQueryClientRoute: UseQueryClientRoute,
   UseQueryWIthParamsRoute: UseQueryWIthParamsRoute,
   UseSuspenseQueryRoute: UseSuspenseQueryRoute,
 }
